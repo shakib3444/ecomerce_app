@@ -1,5 +1,4 @@
 import 'package:ecom/route/route_page.dart';
-import 'package:ecom/view/category_screen/category_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 void main(){

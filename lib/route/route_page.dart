@@ -1,5 +1,6 @@
 import 'package:ecom/route/route_name.dart';
-import 'package:ecom/view/category_screen/category_screen.dart';
+import 'package:ecom/view/category_screen/screen/category_screen.dart';
+import 'package:ecom/view/category_screen/screen/single_category.dart';
 import 'package:get/get.dart';
 
 class RoutePage{
@@ -8,5 +9,7 @@ class RoutePage{
         name: AppRoute.category,
         page: ()=> CategoryScreen()
     ),
+
+    GetPage(name: AppRoute.singleCategory, page: ()=>SingleCategory()),
   ];
 }

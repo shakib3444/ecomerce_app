@@ -1,7 +1,9 @@
+import 'package:ecom/route/route_name.dart';
 import 'package:ecom/utility/assets.dart';
 import 'package:ecom/view/category_screen/widget/category_card.dart';
 import 'package:ecom/widget/app_input.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
    CategoryScreen({super.key});
@@ -39,7 +41,10 @@ class CategoryScreen extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: CategoryCard(
-                        name: "Nike", price: "2100", onClick: (){}, image: Assets.nike),
+                        name: "Nike",
+                        price: "2100",
+                        onClick: ()=>Get.toNamed(AppRoute.singleCategory),
+                        image: Assets.nike),
                   );
 
               }),
@@ -62,7 +67,7 @@ class CategoryScreen extends StatelessWidget {
                       image:Assets.nike,
                       name: "Nike",
                       price: "1500",
-                      onClick: (){},
+                      onClick: ()=>Get.toNamed(AppRoute.singleCategory),
                     );
 
               }),
