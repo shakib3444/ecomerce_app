@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    super.key, required this.name, required this.price, required this.onClick, required this.image,
+    super.key, required this.name, required this.price, required this.onClick, required this.image, this.rating,
   });
 
   final String name;
@@ -12,6 +12,7 @@ class CategoryCard extends StatelessWidget {
   final String image;
   final double height=200;
   final double width= 150;
+  final double? rating;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,17 @@ class CategoryCard extends StatelessWidget {
             const SizedBox(height: 8,),
              Padding(
               padding: const EdgeInsets.only(left: 10),
-              child:  Text(name,style:const TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.white),),
+              child:  Row(
+                children: [
+                  Text(name,style:const TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.white),),
+                  Row(
+                    children: [
+                     const Icon(Icons.star,color: Colors.amber,),
+                      const SizedBox(width: 5,),
+                      Text("$rating",style:const TextStyle(fontWeight: FontWeight.w500,fontSize: 15,color: Colors.white),)
+                    ],),
+                ],
+              ),
             ),
             const SizedBox(height: 5,),
              Padding(
