@@ -38,13 +38,13 @@ class SingleCategory extends StatelessWidget {
                 SizedBox(width: 10,),
                 Row(
                   children: [
-                    Icon(Icons.star,color: Colors.amber,),
+                    Icon(Icons.star,color: Colors.amber,size: 15,),
                     SizedBox(width: 5,),
-                    Text("4.5",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15,color: Colors.white),)
+                    Text("4.5",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,color: Colors.white),)
                   ],),
               ],
             ),
-           const Text("\$${2200}",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Colors.white),),
+           const Text("\$${2200}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.white),),
             const SizedBox(height: 10,),
             const Text("Nike Sneakers For Men Price | The price range for Nike sneakers for men is diverse."
                 " Reflecting the brand’s extensive collection that caters to various styles, preferences, "

@@ -125,6 +125,7 @@ class CategoryScreen extends GetView<HomeController> {
 
             const SizedBox(height: 15,),
             //all Collection
+           const  Text("All Category",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 18,color: Colors.white),),
             SizedBox(
               height: MediaQuery.sizeOf(context).height*.83,
               child: GridView.builder(
@@ -143,7 +144,7 @@ class CategoryScreen extends GetView<HomeController> {
                       image:Assets.nike,
                       name: "Nike",
                       price: "1500",
-                      onClick: ()=>Get.toNamed(AppRoute.singleCategory),
+                      onClick: ()=>Get.toNamed(AppRoute.allProduct),
                     );
 
               }),

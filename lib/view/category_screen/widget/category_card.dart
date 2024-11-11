@@ -48,7 +48,7 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   Text(name,style:const TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.white),),
                   const SizedBox(width: 6,),
-                  Row(
+                  rating ==null ?const Center():Row(
                     children: [
                      const Icon(Icons.star,color: Colors.amber,size: 15,),
 
