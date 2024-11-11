@@ -1,12 +1,14 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom/route/route_name.dart';
 import 'package:ecom/utility/assets.dart';
+import 'package:ecom/view/category_screen/controller/home_controller.dart';
 import 'package:ecom/view/category_screen/widget/category_card.dart';
 import 'package:ecom/widget/app_button.dart';
 import 'package:ecom/widget/app_input.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends GetView<HomeController> {
    CategoryScreen({super.key});
   final _search = TextEditingController();
   @override
@@ -24,21 +26,47 @@ class CategoryScreen extends StatelessWidget {
               child: AppInput(prefixIcon:const Icon(Icons.search),hint: "search", controller: _search),
             )) ,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
+
+            const SizedBox(height: 15,),
             //banner
+            SizedBox(
+              height: 150,
+              child: CarouselSlider(
+                  items: controller.banner.map((imageUrl){
+                    return Builder(builder: (BuildContext context){
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(6),
+                          child: Image.asset(imageUrl,fit: BoxFit.cover,width: double.infinity,));
+                    });
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: 150,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    onPageChanged: (index,reason){
+                      controller.updateIndex(index);
+                    }
+                  ),
+              ),
+            ),
+
             const SizedBox(height: 20,),
+
+            //new ARRIVALS
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("NEW ARRIVALS",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.white),),
-                AppButton(name: "View All", onClick: (){},height: 30,width: 100,bgColor: Colors.grey,),
+                const Text("NEW ARRIVALS",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Colors.white),),
+                AppButton(name: "View All", onClick: ()=>Get.toNamed(AppRoute.allProduct),height: 25,width: 100,bgColor: Colors.grey,),
               ],
             ),
             const SizedBox(height: 10,),
@@ -62,18 +90,21 @@ class CategoryScreen extends StatelessWidget {
 
             ),
            const SizedBox(height: 15,),
+
+            //most popular
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("NEW ARRIVALS",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.white),),
-                AppButton(name: "View All", onClick: (){},height: 30,width: 100,bgColor: Colors.grey,),
+                const Text("Most Popular",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700,color: Colors.white),),
+                AppButton(name: "View All", onClick: ()=>Get.toNamed(AppRoute.allProduct),height: 25,width: 100,bgColor: Colors.grey,),
               ],
             ),
             const SizedBox(height: 10,),
             SizedBox(
               height: 180,
               child: ListView.builder(
+
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context,index){
@@ -90,10 +121,15 @@ class CategoryScreen extends StatelessWidget {
                   }),
 
             ),
-            const SizedBox(height: 15,),
-            Expanded(
 
+
+            const SizedBox(height: 15,),
+            //all Collection
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height*.83,
               child: GridView.builder(
+                  shrinkWrap: true,
+                  physics:const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                   gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
